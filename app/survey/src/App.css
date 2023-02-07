@@ -1,0 +1,101 @@
+.warning {
+    color: #f00;
+}
+
+.prologue {
+    background-image: url('./images/prologue.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: block;
+    width: 100%;
+    height: 30em;
+}
+
+.epilogue {
+    background-image: url('./images/epilogue.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+
+    display: block;
+    width: 100%;
+    height: 30em;
+}
+
+.mainForm {
+    background-color: #fff;
+    box-shadow: 0px 2px 3px 3px rgba(0, 0, 0, 0.1);
+    padding-bottom: 2em;
+}
+
+.separator {
+    background-color: #ffeeee;
+    color: #f66;
+    text-align: center;
+    padding: 0.5em 0em;
+    font-size: x-large;
+}
+
+.separator .form-label {
+    margin-bottom: 0;
+}
+
+.infoGroup {
+    padding: 0.2em 1em;
+    margin: 1.2em;
+    font-size: x-large;
+}
+
+.header {
+    text-align: center;
+}
+
+.infoGroup .form-label {
+    display: block;
+    width: 100%;
+    color: #f99;
+    font-weight: bolder;
+}
+
+.infoGroup .form-text {
+    display: block;
+    width: 100%;
+}
+
+
+.formGroup {
+    border-left: 0.4em #eee solid;
+    padding: 0.2em 0.5em 0.2em 3.0em;
+    margin: 1.5em 2.5em 1.5em 0em;
+}
+
+.formGroup .form-label {
+    display: block;
+    width: 100%;
+}
+
+.formGroup .form-text {
+    display: block;
+    width: 100%;
+}
+
+.formGroup .error, .infoGroup .error {
+    color: #f00;
+    font-size: medium;
+}
+
+.formGroup input.invalid, select.invalid {
+    border: solid 1px #f00;
+}
+
+.formGroup:focus-within {
+    border-left: 0.4em #f99 solid;
+    transition-duration: 500ms;
+}
+
+#locationGmap {
+    margin-left: auto;
+    margin-right: auto;
+}
