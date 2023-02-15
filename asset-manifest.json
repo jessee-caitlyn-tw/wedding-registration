@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/wedding-survey/static/css/main.46049dc4.chunk.css",
+    "main.js": "/wedding-survey/static/js/main.6215639c.chunk.js",
+    "main.js.map": "/wedding-survey/static/js/main.6215639c.chunk.js.map",
+    "runtime-main.js": "/wedding-survey/static/js/runtime-main.668165c1.js",
+    "runtime-main.js.map": "/wedding-survey/static/js/runtime-main.668165c1.js.map",
+    "static/css/2.f26e749f.chunk.css": "/wedding-survey/static/css/2.f26e749f.chunk.css",
+    "static/js/2.9826dd99.chunk.js": "/wedding-survey/static/js/2.9826dd99.chunk.js",
+    "static/js/2.9826dd99.chunk.js.map": "/wedding-survey/static/js/2.9826dd99.chunk.js.map",
+    "index.html": "/wedding-survey/index.html",
+    "static/css/2.f26e749f.chunk.css.map": "/wedding-survey/static/css/2.f26e749f.chunk.css.map",
+    "static/css/main.46049dc4.chunk.css.map": "/wedding-survey/static/css/main.46049dc4.chunk.css.map",
+    "static/js/2.9826dd99.chunk.js.LICENSE.txt": "/wedding-survey/static/js/2.9826dd99.chunk.js.LICENSE.txt",
+    "static/media/App.css": "/wedding-survey/static/media/prologue.1cd275a7.jpg"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.668165c1.js",
+    "static/css/2.f26e749f.chunk.css",
+    "static/js/2.9826dd99.chunk.js",
+    "static/css/main.46049dc4.chunk.css",
+    "static/js/main.6215639c.chunk.js"
+  ]
+}
