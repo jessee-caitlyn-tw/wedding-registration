@@ -296,8 +296,6 @@ function SurveyForm() {
         }
         return isValid;
     };
-
-    
     
     const handleOnSubmit = event => {
         event.preventDefault();
@@ -318,6 +316,10 @@ function SurveyForm() {
 
     useEffect(() => {
         handleReCaptchaVerify();
+        const interval = setInterval(() => handleReCaptchaVerify(), 30000);
+        return () => {
+          clearInterval(interval);
+        };
     }, [handleReCaptchaVerify]);
 
     return (
