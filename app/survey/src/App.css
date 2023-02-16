@@ -17,7 +17,7 @@
     background-image: url('./images/epilogue.jpg');
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center;
+    background-position: center 25%;
 
     display: block;
     width: 100%;

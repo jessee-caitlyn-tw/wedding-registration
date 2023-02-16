@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react';
+import React, { useState, useRef, useCallback, useEffect } from 'react';
 
 import Container from 'react-bootstrap/Container';
 import Button from 'react-bootstrap/Button';
@@ -7,8 +7,7 @@ import RangeSlider from 'react-bootstrap-range-slider';
 import axios from 'axios';
 import { Route, Routes } from "react-router-dom"
 import {
-    GoogleReCaptchaProvider,
-    GoogleReCaptcha
+    useGoogleReCaptcha
 } from 'react-google-recaptcha-v3';
 
 import './App.css';
@@ -23,7 +22,7 @@ function Thanks() {
                     <p>如果有任何狀況，請隨時和信文或倢瑩聯繫</p>
                     <p>期待您的出席哦！</p>
                     <p>
-                    <a target="_blank" without rel="noreferrer" href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=Nmw1YXU1aGp0a2piNnBidW8wcWh1YmVnYWkgamVzc2VlLmNhaXRseW4udHdAbQ&tmsrc=jessee.caitlyn.tw%40gmail.com">加到Google行事曆</a>
+                    <a target="_blank" rel="noreferrer" href="https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=Nmw1YXU1aGp0a2piNnBidW8wcWh1YmVnYWkgamVzc2VlLmNhaXRseW4udHdAbQ&tmsrc=jessee.caitlyn.tw%40gmail.com">加到Google行事曆</a>
                     </p>
                 </Form.Text>
             </Form.Group>
@@ -32,7 +31,18 @@ function Thanks() {
 }
 
 function SurveyForm() {
-    const [refreshReCaptcha, setRefreshReCaptcha] = useState(false);
+    const { executeRecaptcha } = useGoogleReCaptcha();
+
+    const handleReCaptchaVerify = useCallback(async () => {
+        if (!executeRecaptcha) {
+            return;
+        }
+        const token = await executeRecaptcha();
+        setState(prevState => ({
+            ...prevState,
+            "token": token
+        }));
+    }, [executeRecaptcha]);
 
     const [submitting, setSubmitting] = useState(false);
 
@@ -45,7 +55,7 @@ function SurveyForm() {
         numAttendees: 1,
         numChildSeats: 0,
         numVegetarianSeats: 0,
-        invitationType: "email",
+        invitationType: "both",
         email: "",
         address: "",
         message: ""
@@ -93,15 +103,9 @@ function SurveyForm() {
         }));
     }
 
-    const onVerify = useCallback((token) => {
-        setState(prevState => ({
-            ...prevState,
-            "token": token
-        }));
-    });
-
     const handleInputChange = event => {
         const name = event.target.name;
+
         let value = null;
         switch(name) {
             case "isAttend":
@@ -171,7 +175,7 @@ function SurveyForm() {
                 ref: refName,
                 validator: () => {
                     if (state.name.length === 0 || state.name.length > 64) {
-                        addErrorMsg("name", "請填寫您的中文姓名");
+                        addErrorMsg("name", "請填寫您的姓名");
                         return false;
                     }
                     return true;
@@ -300,7 +304,6 @@ function SurveyForm() {
         const isValid = validateInput();
         if (isValid) {
             setSubmitting(true);
-            setRefreshReCaptcha(r => !r);
             axios.post(`https://asia-east1-jessee-caitlyn-tw.cloudfunctions.net/survey`, state)
                 .then( (response) => {
                     window.location = "/wedding-survey/#/thanks";
@@ -308,9 +311,14 @@ function SurveyForm() {
                 .catch( (error) => {
                     addErrorMsg("badRequest", "發生錯誤，請稍後再試");
                     setSubmitting(false);
+                    handleReCaptchaVerify();
                 });
         }
-    };
+    }
+
+    useEffect(() => {
+        handleReCaptchaVerify();
+    }, [handleReCaptchaVerify]);
 
     return (
         <Form onSubmit={handleOnSubmit}>
@@ -472,9 +480,9 @@ function SurveyForm() {
                     name="invitationType"
                     ref={refInvitationType}
                     onChange={handleInputChange}>
+                    <option value="both">紙本 + 電子喜帖</option>
                     <option value="email">電子喜帖</option>
                     <option value="physical">紙本喜帖</option>
-                    <option value="both">紙本 + 電子喜帖</option>
                 </Form.Select>
             </Form.Group>
 
@@ -519,7 +527,7 @@ function SurveyForm() {
                     variant="primary"
                     type="submit"
                     disabled={submitting}>
-                        {submitting && <i class="fa fa-spinner fa-spin"></i>} 送出
+                        {submitting && <i className="fa fa-spinner fa-spin"></i>} 送出
                 </Button>
                 {errorMsg.badRequest && <Form.Text className="error">{errorMsg.badRequest}</Form.Text>}
             </Form.Group>
