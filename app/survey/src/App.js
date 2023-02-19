@@ -366,7 +366,7 @@ function SurveyForm() {
             </Form.Group>
 
             <Form.Group id="formGroupName" className="mb-3 formGroup" controlId="name">
-                <Form.Label>請問您的大名：</Form.Label>
+                <Form.Label>中文姓名：</Form.Label>
                 <Form.Control 
                     type="text"
                     name="name"
@@ -378,13 +378,13 @@ function SurveyForm() {
             </Form.Group>
 
             <Form.Group id="formGroupEngName" className="mb-3 formGroup" controlId="engName">
-                <Form.Label>英文名 (選填)：</Form.Label>
+                <Form.Label>英文姓名 (選填)：</Form.Label>
                 <Form.Control
                     type="text"
                     name="engName"
                     ref={refEngName}
                     value={state.engName}
-                    placeholder="趨勢、Netskope、Appier的朋友請填寫公司英文名"
+                    placeholder="趨勢、Netskope、Appier的朋友請填寫在公司的英文姓名"
                     onChange={handleInputChange} />
                 {errorMsg.engName && <Form.Text className="error">{errorMsg.engName}</Form.Text>}
             </Form.Group>
