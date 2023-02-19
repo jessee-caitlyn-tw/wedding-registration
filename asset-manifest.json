@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/wedding-survey/static/css/main.3f124cfa.chunk.css",
-    "main.js": "/wedding-survey/static/js/main.b6d7f591.chunk.js",
-    "main.js.map": "/wedding-survey/static/js/main.b6d7f591.chunk.js.map",
+    "main.js": "/wedding-survey/static/js/main.71f05889.chunk.js",
+    "main.js.map": "/wedding-survey/static/js/main.71f05889.chunk.js.map",
     "runtime-main.js": "/wedding-survey/static/js/runtime-main.668165c1.js",
     "runtime-main.js.map": "/wedding-survey/static/js/runtime-main.668165c1.js.map",
     "static/css/2.f26e749f.chunk.css": "/wedding-survey/static/css/2.f26e749f.chunk.css",
@@ -19,6 +19,6 @@
     "static/css/2.f26e749f.chunk.css",
     "static/js/2.6856ec5c.chunk.js",
     "static/css/main.3f124cfa.chunk.css",
-    "static/js/main.b6d7f591.chunk.js"
+    "static/js/main.71f05889.chunk.js"
   ]
 }
